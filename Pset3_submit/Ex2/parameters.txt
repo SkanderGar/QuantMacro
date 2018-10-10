@@ -1,0 +1,6 @@
+interest:0.5 
+tho:0 
+T1:0 
+T2:0 
+residual of assets market:-0.030303030303030252 
+eta_y:[1, 1.5, 2.5, 3] 
