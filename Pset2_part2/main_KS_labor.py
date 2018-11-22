@@ -1,0 +1,53 @@
+import numpy as np
+import os
+os.chdir('C:/Users/DELL/Desktop/Luis/Pset2')
+import matplotlib.pyplot as plt
+import K_S_Labor as ks
+ks1 = ks.K_S(N_k=50)
+V, gk, gc, gn, Pos = ks1.Start_VFI()
+
+ks2 = ks.K_S(N_k=50, state='bad')
+Vb, gkb, gcb, gnb, Posb = ks2.Start_VFI()
+
+f, (ax1, ax2) = plt.subplots(1,2)
+f.set_figheight(5)
+f.set_figwidth(10)
+ax1.plot(ks1.grid_k, gk[:,0],'b', label = 'Capital Unemployed')
+ax1.plot(ks1.grid_k, gk[:,1],'r', label = 'Capital Employed')
+ax1.legend(loc = 'upper right')
+ax1.set_xlabel('Capital Tomorrow')
+ax1.set_ylabel('Capital Today')
+ax1.set_title('Policy Functions Expansion')
+ax2.plot(ks1.grid_k, gn[:,0],'b', label = 'Intensity Unemployed')
+ax2.plot(ks1.grid_k, gn[:,1],'r', label = 'Intensity Employed')
+ax2.legend(loc = 'upper right')
+ax2.set_xlabel('Capital')
+ax2.set_ylabel('Intensive Margin')
+ax2.set_title('Policy Functions Expansion')
+
+f2, (gax1, gax2) = plt.subplots(1,2)
+f2.set_figheight(5)
+f2.set_figwidth(10)
+gax1.plot(ks2.grid_k, gkb[:,0],'b', label = 'Capital Unemployed')
+gax1.plot(ks2.grid_k, gkb[:,1],'r', label = 'Capital Employed')
+gax1.legend(loc = 'upper right')
+gax1.set_xlabel('Capital Tomorrow')
+gax1.set_ylabel('Capital Today')
+gax1.set_title('Policy Functions Recession')
+gax2.plot(ks2.grid_k, gnb[:,0],'b', label = 'Intensity Unemployed')
+gax2.plot(ks2.grid_k, gnb[:,1],'r', label = 'Intensity Employed')
+gax2.legend(loc = 'upper right')
+gax2.set_xlabel('Capital')
+gax2.set_ylabel('Intensive Margin')
+gax2.set_title('Policy Functions Recession')
+
+
+f3, hax1 = plt.subplots(1,1)
+f3.set_figheight(5)
+f3.set_figwidth(10)
+hax1.plot(ks1.grid_k, gn[:,1],'b', label = 'Expansion')
+hax1.plot(ks2.grid_k, gnb[:,1],'r', label = 'Recession')
+hax1.legend(loc = 'upper right')
+hax1.set_xlabel('Capital Today')
+hax1.set_ylabel('Intensive Margin')
+hax1.set_title('Intensive Margin')
